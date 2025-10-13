@@ -2,7 +2,7 @@ const express = require('express')
 const chatRouter = require('./routes/chatRouter')
 const { createServer } = require('node:http')
 const { Server } = require('socket.io')
-const cors = require('cors')
+//const cors = require('cors') //might be unnecessary
 
 //express initialization
 const app = express()
@@ -11,7 +11,7 @@ const app = express()
 const server = createServer(app)
 
 //cors initialization
-app.use(cors())
+//app.use(cors()) //might be unnecessary
 
 //access html body
 app.use(express.json())
@@ -19,6 +19,9 @@ app.use(express.urlencoded({extended: true}))
 
 //route middleware
 app.use(chatRouter)
+
+// Need to require the entire Passport config module so server.js knows about it
+require('./configs/passport')
 
 const io = new Server(server, {
     cors: {
