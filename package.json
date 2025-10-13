@@ -1,0 +1,31 @@
+{
+  "name": "messaging-app-back",
+  "version": "1.0.0",
+  "description": "Simple messaging app frontend using Express.js + socket.io",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-hardine/messaging-app-back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/d-hardine/messaging-app-back/issues"
+  },
+  "homepage": "https://github.com/d-hardine/messaging-app-back#readme",
+  "dependencies": {
+    "@prisma/client": "^6.17.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "prisma": "^6.17.1"
+  }
+}
