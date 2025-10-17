@@ -15,10 +15,22 @@ datasource db {
 }
 
 model User {
-  id        String @id @default(uuid())
-  firstName String @db.VarChar(50)
-  lastName  String @db.VarChar(50)
-  email     String @unique @db.VarChar(100)
-  username  String @unique @db.VarChar(100)
-  password  String @db.VarChar(200)
+  id              String    @id @default(uuid())
+  firstName       String    @db.VarChar(50)
+  lastName        String    @db.VarChar(50)
+  email           String    @unique @db.VarChar(100)
+  username        String    @unique @db.VarChar(100)
+  password        String    @db.VarChar(200)
+  messageSent     Message[] @relation("senderId")
+  messageRecieved Message[] @relation("recipientId")
+}
+
+model Message {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  content     String
+  senderId    String
+  sender      User     @relation("senderId", fields: [senderId], references: [id])
+  recipientId String
+  recipient   User     @relation("recipientId", fields: [recipientId], references: [id])
 }

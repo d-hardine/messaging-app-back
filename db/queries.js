@@ -21,4 +21,12 @@ async function lookupUser(username) {
     })
 }
 
-module.exports = { createNewUser, lookupUser }
+async function lookupEmail(email) {
+    return await prisma.user.findUnique({
+        where: {
+            email: email
+        },
+    })
+}
+
+module.exports = { createNewUser, lookupUser, lookupEmail }
